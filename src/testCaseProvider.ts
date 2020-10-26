@@ -37,17 +37,17 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 			 autoCompleteContext.currentTab ==  1 ) {
 			
 			// Name
-			if ( document.getText().match(regexName) == null ) {
+			if ( autoCompleteContext.localText.match(regexName) == null ) {
 				completionItems.push(testCaseName);
 			}
 
 			// steps
-			if ( document.getText().match(regexSteps) == null ) {
+			if ( autoCompleteContext.localText.match(regexSteps) == null ) {
 				completionItems.push(testCaseSteps);
 			}
 
 			// context
-			if ( document.getText().match(regexContext) == null ) {
+			if ( autoCompleteContext.localText.match(regexContext) == null ) {
 				completionItems.push(testCaseContext);
 			}
 		}

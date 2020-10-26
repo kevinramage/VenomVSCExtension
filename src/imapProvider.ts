@@ -10,7 +10,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imaphost.insertText = "imaphost: ";
 	imaphost.documentation = "imaphost (Mandatory)";
 	imaphost.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexImaphost) ) {
+	if ( !autoCompleteContext.localText.match(regexImaphost) ) {
 		completionItems.push(imaphost);
 	}
 
@@ -20,7 +20,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imapport.insertText = "imapport: 993";
 	imapport.documentation = "imapport (Optional)";
 	imapport.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexImapport) ) {
+	if ( !autoCompleteContext.localText.match(regexImapport) ) {
 		completionItems.push(imapport);
 	}
 
@@ -30,7 +30,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imapuser.insertText = "imapuser: ";
 	imapuser.documentation = "imapuser (Mandatory)";
 	imapuser.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexImapuser) ) {
+	if ( !autoCompleteContext.localText.match(regexImapuser) ) {
 		completionItems.push(imapuser);
 	}
 
@@ -40,7 +40,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imappassword.insertText = "imappassword: ";
 	imappassword.documentation = "imappassword (Mandatory)";
 	imappassword.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexImappassword) ) {
+	if ( !autoCompleteContext.localText.match(regexImappassword) ) {
 		completionItems.push(imappassword);
 	}
 
@@ -50,7 +50,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchfrom.insertText = "searchfrom: ";
 	searchfrom.documentation = "searchfrom (Optional)";
 	searchfrom.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSearchfrom) ) {
+	if ( !autoCompleteContext.localText.match(regexSearchfrom) ) {
 		completionItems.push(searchfrom);
 	}
 
@@ -60,7 +60,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchto.insertText = "searchto: ";
 	searchto.documentation = "searchto (Optional)";
 	searchto.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSearchto) ) {
+	if ( !autoCompleteContext.localText.match(regexSearchto) ) {
 		completionItems.push(searchto);
 	}
 
@@ -70,7 +70,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchsubject.insertText = "searchsubject: ";
 	searchsubject.documentation = "searchsubject (Optional)";
 	searchsubject.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSearchsubject) ) {
+	if ( !autoCompleteContext.localText.match(regexSearchsubject) ) {
 		completionItems.push(searchsubject);
 	}
 
@@ -80,7 +80,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchbody.insertText = "searchbody: ";
 	searchbody.documentation = "searchbody (Optional)";
 	searchbody.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSearchbody) ) {
+	if ( !autoCompleteContext.localText.match(regexSearchbody) ) {
 		completionItems.push(searchbody);
 	}
 
@@ -90,7 +90,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	mbox.insertText = "mbox: ";
 	mbox.documentation = "mbox (Optional)";
 	mbox.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMbox) ) {
+	if ( !autoCompleteContext.localText.match(regexMbox) ) {
 		completionItems.push(mbox);
 	}
 
@@ -100,7 +100,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	mboxonsuccess.insertText = "mboxonsuccess: ";
 	mboxonsuccess.documentation = "mboxonsuccess (Optional)";
 	mboxonsuccess.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMboxonsuccess) ) {
+	if ( !autoCompleteContext.localText.match(regexMboxonsuccess) ) {
 		completionItems.push(mboxonsuccess);
 	}
 }

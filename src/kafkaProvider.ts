@@ -10,7 +10,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	addrs.insertText = "addrs:";
 	addrs.documentation = "Addrs (Optional)";
 	addrs.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexAddrs) ) {
+	if ( !autoCompleteContext.localText.match(regexAddrs) ) {
 		completionItems.push(addrs);
 	}
 
@@ -20,7 +20,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	with_tls.insertText = "with_tls:";
 	with_tls.documentation = "with_tls (Optional)";
 	with_tls.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexWithTLS) ) {
+	if ( !autoCompleteContext.localText.match(regexWithTLS) ) {
 		completionItems.push(with_tls);
 	}
 
@@ -30,7 +30,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	with_sasl.insertText = "with_sasl:";
 	with_sasl.documentation = "with_sasl (Optional)";
 	with_sasl.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexWithSASL) ) {
+	if ( !autoCompleteContext.localText.match(regexWithSASL) ) {
 		completionItems.push(with_sasl);
 	}
 
@@ -40,7 +40,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	with_sasl_handshaked.insertText = "with_sasl_handshaked:";
 	with_sasl_handshaked.documentation = "with_sasl_handshaked (Optional)";
 	with_sasl_handshaked.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexWithSASLHandshaked) ) {
+	if ( !autoCompleteContext.localText.match(regexWithSASLHandshaked) ) {
 		completionItems.push(with_sasl_handshaked);
 	}
 
@@ -50,7 +50,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	user.insertText = "user:";
 	user.documentation = "user (Optional)";
 	user.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexUser) ) {
+	if ( !autoCompleteContext.localText.match(regexUser) ) {
 		completionItems.push(user);
 	}
 
@@ -60,7 +60,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	password.insertText = "password:";
 	password.documentation = "password (Optional)";
 	password.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexPassword) ) {
+	if ( !autoCompleteContext.localText.match(regexPassword) ) {
 		completionItems.push(password);
 	}
 
@@ -70,7 +70,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	kafka_version.insertText = "kafka_version:";
 	kafka_version.documentation = "kafka_version (Optional)";
 	kafka_version.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexKafkaVersion) ) {
+	if ( !autoCompleteContext.localText.match(regexKafkaVersion) ) {
 		completionItems.push(kafka_version);
 	}
 
@@ -80,7 +80,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	client_type.insertText = new vscode.SnippetString("client_type: ${1|producer,consumer|}");
 	client_type.documentation = "client_type (Optional)";
 	client_type.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexClientType) ) {
+	if ( !autoCompleteContext.localText.match(regexClientType) ) {
 		completionItems.push(client_type);
 	}
 
@@ -91,7 +91,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	group_id.insertText = "group_id:";
 	group_id.documentation = "group_id (Optional)";
 	group_id.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexGroupId) ) {
+	if ( !autoCompleteContext.localText.match(regexGroupId) ) {
 		completionItems.push(group_id);
 	}
 
@@ -101,7 +101,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	topics.insertText = "topics:";
 	topics.documentation = "topics (Optional)";
 	topics.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexTopics) ) {
+	if ( !autoCompleteContext.localText.match(regexTopics) ) {
 		completionItems.push(topics);
 	}
 
@@ -111,7 +111,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	timeout.insertText = "timeout:";
 	timeout.documentation = "timeout (Optional)";
 	timeout.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexTimeout) ) {
+	if ( !autoCompleteContext.localText.match(regexTimeout) ) {
 		completionItems.push(timeout);
 	}
 
@@ -121,7 +121,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	message_limit.insertText = "message_limit:";
 	message_limit.documentation = "message_limit (Optional)";
 	message_limit.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMessageLimit) ) {
+	if ( !autoCompleteContext.localText.match(regexMessageLimit) ) {
 		completionItems.push(message_limit);
 	}
 
@@ -131,7 +131,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	initial_offset.insertText = "initial_offset:";
 	initial_offset.documentation = "initial_offset (Optional)";
 	initial_offset.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexInitialOffset) ) {
+	if ( !autoCompleteContext.localText.match(regexInitialOffset) ) {
 		completionItems.push(initial_offset);
 	}
 
@@ -141,7 +141,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	mark_offset.insertText = "mark_offset:";
 	mark_offset.documentation = "mark_offset (Optional)";
 	mark_offset.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMarkOffset) ) {
+	if ( !autoCompleteContext.localText.match(regexMarkOffset) ) {
 		completionItems.push(mark_offset);
 	}
 
@@ -152,7 +152,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	messages.insertText = "messages:";
 	messages.documentation = "messages (Optional)";
 	messages.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMessages) ) {
+	if ( !autoCompleteContext.localText.match(regexMessages) ) {
 		completionItems.push(messages);
 	}
 
@@ -162,7 +162,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	messages_file.insertText = "messages_file:";
 	messages_file.documentation = "messages_file (Optional)";
 	messages_file.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMessagesFile) ) {
+	if ( !autoCompleteContext.localText.match(regexMessagesFile) ) {
 		completionItems.push(messages_file);
 	}
 }

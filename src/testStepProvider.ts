@@ -43,7 +43,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			 autoCompleteContext.currentParent == PARENT.STEPS &&
 			 autoCompleteContext.currentTab == 2 ) {
 
-			if ( !document.getText().match(regexType) ) {
+			if ( !autoCompleteContext.localText.match(regexType) ) {
 				completionItems.push(testStepType);
 			}
 
@@ -105,7 +105,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			}
 
 			// Assertions
-			if ( !document.getText().match(regexAssertions) ) {
+			if ( !autoCompleteContext.localText.match(regexAssertions) ) {
 				completionItems.push(testStepAssertions);
 			}
 		}

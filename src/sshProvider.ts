@@ -10,7 +10,7 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	host.insertText = "host:";
 	host.documentation = "Host (Mandatory)";
 	host.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexHost) ) {
+	if ( !autoCompleteContext.localText.match(regexHost) ) {
 		completionItems.push(host);
 	}
 
@@ -20,7 +20,7 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	command.insertText = "command:";
 	command.documentation = "Command (Mandatory)";
 	command.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexCommand) ) {
+	if ( !autoCompleteContext.localText.match(regexCommand) ) {
 		completionItems.push(command);
 	}
 
@@ -30,7 +30,7 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	user.insertText = "user:";
 	user.documentation = "User (Optional)";
 	user.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexUser) ) {
+	if ( !autoCompleteContext.localText.match(regexUser) ) {
 		completionItems.push(user);
 	}
 
@@ -40,7 +40,7 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	password.insertText = "password:";
 	password.documentation = "Password (Optional)";
 	password.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexPassword) ) {
+	if ( !autoCompleteContext.localText.match(regexPassword) ) {
 		completionItems.push(password);
 	}
 
@@ -50,7 +50,7 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	privatekey.insertText = "privatekey:";
 	privatekey.documentation = "Private Key (Optional)";
 	privatekey.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexPrivateKey) ) {
+	if ( !autoCompleteContext.localText.match(regexPrivateKey) ) {
 		completionItems.push(privatekey);
 	}
 }

@@ -10,7 +10,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	method.insertText = "method: GET" + Utils.NewLine;
 	method.documentation = "Request method (Optional)";
 	method.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMethod) ) {
+	if ( !autoCompleteContext.localText.match(regexMethod) ) {
 		completionItems.push(method);
 	}
 
@@ -20,7 +20,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	url.insertText = "url:"
 	url.documentation = "Url (Mandatory)";
 	url.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexUrl) ) {
+	if ( !autoCompleteContext.localText.match(regexUrl) ) {
 		completionItems.push(url);
 	}
 
@@ -30,7 +30,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	unixSock.insertText = "unix_sock:"
 	unixSock.documentation = "Unix Sock (Optional)";
 	unixSock.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexUnixSock) ) {
+	if ( !autoCompleteContext.localText.match(regexUnixSock) ) {
 		completionItems.push(unixSock);
 	}
 
@@ -40,7 +40,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	path.insertText = "path: /"
 	path.documentation = "Path (Optional)";
 	path.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexPath) ) {
+	if ( !autoCompleteContext.localText.match(regexPath) ) {
 		completionItems.push(path);
 	}
 
@@ -50,7 +50,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	body.insertText = "body: "
 	body.documentation = "Body (Optional)";
 	body.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexBody) ) {
+	if ( !autoCompleteContext.localText.match(regexBody) ) {
 		completionItems.push(body);
 	}
 
@@ -60,7 +60,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	bodyFile.insertText = "bodyFile: "
 	bodyFile.documentation = "Body file (Optional)";
 	bodyFile.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexBodyFile) ) {
+	if ( !autoCompleteContext.localText.match(regexBodyFile) ) {
 		completionItems.push(bodyFile);
 	}
 
@@ -70,7 +70,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	headers.insertText = "headers: " + Utils.NewLine + autoCompleteContext.tab;
 	headers.documentation = "Headers (Optional)";
 	headers.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexHeaders) ) {
+	if ( !autoCompleteContext.localText.match(regexHeaders) ) {
 		completionItems.push(headers);
 	}
 
@@ -80,7 +80,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	proxy.insertText = "proxy: "
 	proxy.documentation = "Proxy (Optional)";
 	proxy.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexProxy) ) {
+	if ( !autoCompleteContext.localText.match(regexProxy) ) {
 		completionItems.push(proxy);
 	}
 
@@ -90,7 +90,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	ignoreVerifySSL.insertText = "ignore_verify_ssl: false";
 	ignoreVerifySSL.documentation = "Ignore verify SSL (Optional)";
 	ignoreVerifySSL.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexIgnoreVerifySSL) ) {
+	if ( !autoCompleteContext.localText.match(regexIgnoreVerifySSL) ) {
 		completionItems.push(ignoreVerifySSL);
 	}
 
@@ -100,7 +100,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	basicAuthUser.insertText = "basic_auth_user: ";
 	basicAuthUser.documentation = "Basic auth user (Optional)";
 	basicAuthUser.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexBasicAuthUser) ) {
+	if ( !autoCompleteContext.localText.match(regexBasicAuthUser) ) {
 		completionItems.push(basicAuthUser);
 	}
 
@@ -110,7 +110,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	basicAuthPassword.insertText = "basic_auth_password: ";
 	basicAuthPassword.documentation = "Basic auth password (Optional)";
 	basicAuthPassword.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexBasicAuthPassword) ) {
+	if ( !autoCompleteContext.localText.match(regexBasicAuthPassword) ) {
 		completionItems.push(basicAuthPassword);
 	}
 
@@ -120,7 +120,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	noFollowRedirect.insertText = "no_follow_redirect: true";
 	noFollowRedirect.documentation = "No follow redirect (Optional)";
 	noFollowRedirect.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexNoFollowRedirect) ) {
+	if ( !autoCompleteContext.localText.match(regexNoFollowRedirect) ) {
 		completionItems.push(noFollowRedirect);
 	}
 
@@ -130,7 +130,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	skipBody.insertText = "skip_body: false";
 	skipBody.documentation = "Skip body (Optional)";
 	skipBody.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSkipBody) ) {
+	if ( !autoCompleteContext.localText.match(regexSkipBody) ) {
 		completionItems.push(skipBody);
 	}
 
@@ -140,7 +140,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	skipHeaders.insertText = "skip_headers: false";
 	skipHeaders.documentation = "Skip headers (Optional)";
 	skipHeaders.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSkipHeaders) ) {
+	if ( !autoCompleteContext.localText.match(regexSkipHeaders) ) {
 		completionItems.push(skipHeaders);
 	}
 }

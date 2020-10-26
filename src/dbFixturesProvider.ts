@@ -10,7 +10,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	database.insertText = new vscode.SnippetString("database: ${1|mysql,postgres|}");
 	database.documentation = "Database (Mandatory)";
 	database.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexDatabase) ) {
+	if ( !autoCompleteContext.localText.match(regexDatabase) ) {
 		completionItems.push(database);
 	}
 
@@ -20,7 +20,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	dsn.insertText = "dsn: ";
 	dsn.documentation = "DSN (Mandatory)";
 	dsn.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexDSN) ) {
+	if ( !autoCompleteContext.localText.match(regexDSN) ) {
 		completionItems.push(dsn);
 	}
 
@@ -30,7 +30,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	schemas.insertText = "schemas: ";
 	schemas.documentation = "Schemas (Optional)";
 	schemas.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSchemas) ) {
+	if ( !autoCompleteContext.localText.match(regexSchemas) ) {
 		completionItems.push(schemas);
 	}
 
@@ -40,7 +40,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	migrations.insertText = "migrations: ";
 	migrations.documentation = "Migrations (Optional)";
 	migrations.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMigrations) ) {
+	if ( !autoCompleteContext.localText.match(regexMigrations) ) {
 		completionItems.push(migrations);
 	}
 
@@ -50,7 +50,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	migrationsTable.insertText = "migrationsTable: ";
 	migrationsTable.documentation = "Migrations Table (Optional)";
 	migrationsTable.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMigrationsTable) ) {
+	if ( !autoCompleteContext.localText.match(regexMigrationsTable) ) {
 		completionItems.push(migrationsTable);
 	}
 
@@ -60,7 +60,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	skipResetSequences.insertText = "skipResetSequences: ";
 	skipResetSequences.documentation = "Skip reset sequences (Optional)";
 	skipResetSequences.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexSkipResetSequences) ) {
+	if ( !autoCompleteContext.localText.match(regexSkipResetSequences) ) {
 		completionItems.push(skipResetSequences);
 	}
 
@@ -70,7 +70,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	files.insertText = "files: ";
 	files.documentation = "Files (Optional)";
 	files.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexFiles) ) {
+	if ( !autoCompleteContext.localText.match(regexFiles) ) {
 		completionItems.push(files);
 	}
 
@@ -80,7 +80,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	folder.insertText = "folder: ";
 	folder.documentation = "Folder (Optional)";
 	folder.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexFolder) ) {
+	if ( !autoCompleteContext.localText.match(regexFolder) ) {
 		completionItems.push(folder);
 	}
 }

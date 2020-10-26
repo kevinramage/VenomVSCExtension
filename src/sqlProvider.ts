@@ -10,7 +10,7 @@ export const sqlProvider = function (completionItems : vscode.CompletionItem[], 
 	driver.insertText = new vscode.SnippetString("driver: ${1|mysql,postgres|}");
 	driver.documentation = "Driver (Mandatory)";
 	driver.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexDriver) ) {
+	if ( !autoCompleteContext.localText.match(regexDriver) ) {
 		completionItems.push(driver);
 	}
 
@@ -20,7 +20,7 @@ export const sqlProvider = function (completionItems : vscode.CompletionItem[], 
 	dsn.insertText = "dsn: \"user:password@(localhost:3306)/venom\"";
 	dsn.documentation = "DSN (Mandatory)";
 	dsn.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexDSN) ) {
+	if ( !autoCompleteContext.localText.match(regexDSN) ) {
 		completionItems.push(dsn);
 	}
 
@@ -30,7 +30,7 @@ export const sqlProvider = function (completionItems : vscode.CompletionItem[], 
 	commands.insertText = "commands: \"\"";
 	commands.documentation = "Commands (Optional)";
 	commands.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexCommands) ) {
+	if ( !autoCompleteContext.localText.match(regexCommands) ) {
 		completionItems.push(commands);
 	}
 
@@ -40,7 +40,7 @@ export const sqlProvider = function (completionItems : vscode.CompletionItem[], 
 	file.insertText = "file: \"\"";
 	file.documentation = "File (Optional)";
 	file.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexFile) ) {
+	if ( !autoCompleteContext.localText.match(regexFile) ) {
 		completionItems.push(file);
 	}
 }

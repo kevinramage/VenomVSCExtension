@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { Utils } from './utils';
 
 export module PARENT {
 	export const NO_PARENT = "";
@@ -20,6 +21,7 @@ export class AutoCompleteContext {
 	private _currentParent : string = "";
 	private _isAutoCompletePossible : boolean = false;
 	private _documentText : string = "";
+	private _localText : string = "";
 
 	private _name : string = "";
 	private _type : string = "";
@@ -31,10 +33,14 @@ export class AutoCompleteContext {
 		this._documentText = document.getText().substr(0, document.offsetAt(position));
 		this._documentText = this._documentText.replace(/\r/g, "").replace(/\t/g, " ");
 
+		// Get next content
+		const contentAfter = document.getText().substr(document.offsetAt(position) - position.character);
+
 		// Get current line
 		this.getCurrentLine(this._documentText);
 		
 		// Detect
+		this.computeLocalText(this._documentText, contentAfter);
 		this.computeLastParent(this._documentText);
 		this.detectName(this._documentText);
 		this.detectType(this._documentText);
@@ -71,8 +77,10 @@ export class AutoCompleteContext {
 			const lines = documentText.split('\n');
 			var i, tab = 999;
 			for ( i = lines.length - 1; i >= 0; i--) {
-				tab = this.computeLineTabulation(lines[i]);
-				if ( tab < this.currentTab) { break; }
+				if ( lines[i].replace(/\r/g, "").trim().length > 0 ) {
+					tab = this.computeLineTabulation(lines[i]);
+					if ( tab < this.currentTab) { break; }
+				}
 			}
 			if ( tab < this.currentTab && i >= 0) {
 				const regex = /\s*\-?\s*(?<key>[a-z|A-Z|0-9|_]*)\s*/g;
@@ -104,6 +112,41 @@ export class AutoCompleteContext {
 		});
 	}
 
+	private computeLocalText(contentBefore: string, contentAfter: string) {
+		var result : Array<string> = [];
+
+		// Lines before
+		if ( contentBefore && contentBefore.length > 0 ) {
+			const lines = contentBefore.split('\n');
+			const currentTab = this.computeLineTabulation(lines[lines.length - 1]);
+
+			for ( var i = lines.length - 1; i >= 0; i-- ) {
+				const tab = this.computeLineTabulation(lines[i]);
+				if ( tab == currentTab ) {
+					result.push(lines[i]);
+				} else {
+					break;
+				}
+			}
+			result = result.reverse();
+		}
+
+		// Lines after
+		if ( contentAfter && contentAfter.length > 0 ) {
+			const lines = contentAfter.split('\n');
+			const currentTab = this.computeLineTabulation(lines[0]);
+			for ( var i = 1; i < lines.length; i++ ) {
+				const tab = this.computeLineTabulation(lines[i]);
+				if ( tab == currentTab ) {
+					result.push(lines[i]);
+				} else {
+					break;
+				}
+			}
+		}
+
+		this._localText = result.join(Utils.NewLine);
+	}
 
 	public get tab() {
 		return this._tab;
@@ -119,6 +162,9 @@ export class AutoCompleteContext {
 	}
 	public get documentText() {
 		return this._documentText;
+	}
+	public get localText() {
+		return this._localText;
 	}
 
 	public get name() {

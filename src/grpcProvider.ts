@@ -10,7 +10,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	url.insertText = "url:";
 	url.documentation = "Url (Mandatory)";
 	url.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexUrl) ) {
+	if ( !autoCompleteContext.localText.match(regexUrl) ) {
 		completionItems.push(url);
 	}
 
@@ -20,7 +20,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	service.insertText = "service:";
 	service.documentation = "Service (Mandatory)";
 	service.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexService) ) {
+	if ( !autoCompleteContext.localText.match(regexService) ) {
 		completionItems.push(service);
 	}
 
@@ -30,7 +30,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	method.insertText = "method:";
 	method.documentation = "Method (Mandatory)";
 	method.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexMethod) ) {
+	if ( !autoCompleteContext.localText.match(regexMethod) ) {
 		completionItems.push(method);
 	}
 
@@ -40,7 +40,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	plaintext.insertText = "plaintext:";
 	plaintext.documentation = "Plaintext (Mandatory)";
 	plaintext.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexPlaintext) ) {
+	if ( !autoCompleteContext.localText.match(regexPlaintext) ) {
 		completionItems.push(plaintext);
 	}
 
@@ -50,7 +50,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	data.insertText = "data:";
 	data.documentation = "Data (Mandatory)";
 	data.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexData) ) {
+	if ( !autoCompleteContext.localText.match(regexData) ) {
 		completionItems.push(data);
 	}
 
@@ -60,7 +60,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	headers.insertText = "headers:";
 	headers.documentation = "Headers (Mandatory)";
 	headers.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexHeaders) ) {
+	if ( !autoCompleteContext.localText.match(regexHeaders) ) {
 		completionItems.push(headers);
 	}
 
@@ -70,7 +70,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	connectTimeout.insertText = "connect_timeout:";
 	connectTimeout.documentation = "Connect timeout (Mandatory)";
 	connectTimeout.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexConnectTimeout) ) {
+	if ( !autoCompleteContext.localText.match(regexConnectTimeout) ) {
 		completionItems.push(connectTimeout);
 	}
 
@@ -80,7 +80,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	defaultFields.insertText = "default_fields:";
 	defaultFields.documentation = "Default fields (Mandatory)";
 	defaultFields.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexDefaultFields) ) {
+	if ( !autoCompleteContext.localText.match(regexDefaultFields) ) {
 		completionItems.push(defaultFields);
 	}
 
@@ -90,7 +90,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	includeTextSeparator.insertText = "include_text_separator:";
 	includeTextSeparator.documentation = "Include text separator (Mandatory)";
 	includeTextSeparator.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.documentText.match(regexIncludeTextSeparator) ) {
+	if ( !autoCompleteContext.localText.match(regexIncludeTextSeparator) ) {
 		completionItems.push(includeTextSeparator);
 	}
 }

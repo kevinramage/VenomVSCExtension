@@ -10,5 +10,7 @@ export const webProvider = function (completionItems : vscode.CompletionItem[], 
 	actions.insertText = "actions:" + Utils.NewLine + autoCompleteContext.tab;
 	actions.documentation = "Actions (Mandatory)";
 	actions.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(actions);
+	if ( !autoCompleteContext.localText.match(regexActions) ) {
+		completionItems.push(actions);
+	}
 }
