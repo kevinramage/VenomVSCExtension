@@ -10,7 +10,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imaphost.insertText = "imaphost: ";
 	imaphost.documentation = "imaphost (Mandatory)";
 	imaphost.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(imaphost);
+	if ( !autoCompleteContext.documentText.match(regexImaphost) ) {
+		completionItems.push(imaphost);
+	}
 
 	// imapport
 	const regexImapport = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}imapport\\s*:.*");
@@ -18,7 +20,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imapport.insertText = "imapport: 993";
 	imapport.documentation = "imapport (Optional)";
 	imapport.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(imapport);
+	if ( !autoCompleteContext.documentText.match(regexImapport) ) {
+		completionItems.push(imapport);
+	}
 
 	// imapuser
 	const regexImapuser = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}imapuser\\s*:.*");
@@ -26,7 +30,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imapuser.insertText = "imapuser: ";
 	imapuser.documentation = "imapuser (Mandatory)";
 	imapuser.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(imapuser);
+	if ( !autoCompleteContext.documentText.match(regexImapuser) ) {
+		completionItems.push(imapuser);
+	}
 
 	// imappassword
 	const regexImappassword = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}imappassword\\s*:.*");
@@ -34,7 +40,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	imappassword.insertText = "imappassword: ";
 	imappassword.documentation = "imappassword (Mandatory)";
 	imappassword.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(imappassword);
+	if ( !autoCompleteContext.documentText.match(regexImappassword) ) {
+		completionItems.push(imappassword);
+	}
 
 	// searchfrom
 	const regexSearchfrom = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}searchfrom\\s*:.*");
@@ -42,7 +50,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchfrom.insertText = "searchfrom: ";
 	searchfrom.documentation = "searchfrom (Optional)";
 	searchfrom.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(searchfrom);
+	if ( !autoCompleteContext.documentText.match(regexSearchfrom) ) {
+		completionItems.push(searchfrom);
+	}
 
 	// searchto
 	const regexSearchto = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}searchto\\s*:.*");
@@ -50,7 +60,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchto.insertText = "searchto: ";
 	searchto.documentation = "searchto (Optional)";
 	searchto.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(searchto);
+	if ( !autoCompleteContext.documentText.match(regexSearchto) ) {
+		completionItems.push(searchto);
+	}
 
 	// searchsubject
 	const regexSearchsubject = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}searchsubject\\s*:.*");
@@ -58,7 +70,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchsubject.insertText = "searchsubject: ";
 	searchsubject.documentation = "searchsubject (Optional)";
 	searchsubject.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(searchsubject);
+	if ( !autoCompleteContext.documentText.match(regexSearchsubject) ) {
+		completionItems.push(searchsubject);
+	}
 
 	// searchbody
 	const regexSearchbody = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}searchbody\\s*:.*");
@@ -66,7 +80,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	searchbody.insertText = "searchbody: ";
 	searchbody.documentation = "searchbody (Optional)";
 	searchbody.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(searchbody);
+	if ( !autoCompleteContext.documentText.match(regexSearchbody) ) {
+		completionItems.push(searchbody);
+	}
 
 	// mbox
 	const regexMbox = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}mbox\\s*:.*");
@@ -74,7 +90,9 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	mbox.insertText = "mbox: ";
 	mbox.documentation = "mbox (Optional)";
 	mbox.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(mbox);
+	if ( !autoCompleteContext.documentText.match(regexMbox) ) {
+		completionItems.push(mbox);
+	}
 
 	// mboxonsuccess
 	const regexMboxonsuccess = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}mboxonsuccess\\s*:.*");
@@ -82,5 +100,7 @@ export const imapProvider = function (completionItems : vscode.CompletionItem[],
 	mboxonsuccess.insertText = "mboxonsuccess: ";
 	mboxonsuccess.documentation = "mboxonsuccess (Optional)";
 	mboxonsuccess.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(mboxonsuccess);
+	if ( !autoCompleteContext.documentText.match(regexMboxonsuccess) ) {
+		completionItems.push(mboxonsuccess);
+	}
 }

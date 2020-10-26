@@ -10,7 +10,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	url.insertText = "url:";
 	url.documentation = "Url (Mandatory)";
 	url.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(url);
+	if ( !autoCompleteContext.documentText.match(regexUrl) ) {
+		completionItems.push(url);
+	}
 
 	// Service
 	const regexService = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}service\\s*:.*");
@@ -18,7 +20,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	service.insertText = "service:";
 	service.documentation = "Service (Mandatory)";
 	service.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(service);
+	if ( !autoCompleteContext.documentText.match(regexService) ) {
+		completionItems.push(service);
+	}
 
 	// Method
 	const regexMethod = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}method\\s*:.*");
@@ -26,7 +30,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	method.insertText = "method:";
 	method.documentation = "Method (Mandatory)";
 	method.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(method);
+	if ( !autoCompleteContext.documentText.match(regexMethod) ) {
+		completionItems.push(method);
+	}
 
 	// Plaintext
 	const regexPlaintext = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}plaintext\\s*:.*");
@@ -34,7 +40,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	plaintext.insertText = "plaintext:";
 	plaintext.documentation = "Plaintext (Mandatory)";
 	plaintext.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(plaintext);
+	if ( !autoCompleteContext.documentText.match(regexPlaintext) ) {
+		completionItems.push(plaintext);
+	}
 
 	// Data
 	const regexData = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}data\\s*:.*");
@@ -42,7 +50,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	data.insertText = "data:";
 	data.documentation = "Data (Mandatory)";
 	data.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(data);
+	if ( !autoCompleteContext.documentText.match(regexData) ) {
+		completionItems.push(data);
+	}
 
 	// Headers
 	const regexHeaders = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}headers\\s*:.*");
@@ -50,7 +60,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	headers.insertText = "headers:";
 	headers.documentation = "Headers (Mandatory)";
 	headers.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(headers);
+	if ( !autoCompleteContext.documentText.match(regexHeaders) ) {
+		completionItems.push(headers);
+	}
 
 	// connect_timeout
 	const regexConnectTimeout = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}connect_timeout\\s*:.*");
@@ -58,7 +70,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	connectTimeout.insertText = "connect_timeout:";
 	connectTimeout.documentation = "Connect timeout (Mandatory)";
 	connectTimeout.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(connectTimeout);
+	if ( !autoCompleteContext.documentText.match(regexConnectTimeout) ) {
+		completionItems.push(connectTimeout);
+	}
 
 	// default_fields
 	const regexDefaultFields = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}default_fields\\s*:.*");
@@ -66,7 +80,9 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	defaultFields.insertText = "default_fields:";
 	defaultFields.documentation = "Default fields (Mandatory)";
 	defaultFields.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(defaultFields);
+	if ( !autoCompleteContext.documentText.match(regexDefaultFields) ) {
+		completionItems.push(defaultFields);
+	}
 
 	// include_text_separator
 	const regexIncludeTextSeparator = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}include_text_separator\\s*:.*");
@@ -74,5 +90,7 @@ export const grpcProvider = function (completionItems : vscode.CompletionItem[],
 	includeTextSeparator.insertText = "include_text_separator:";
 	includeTextSeparator.documentation = "Include text separator (Mandatory)";
 	includeTextSeparator.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(includeTextSeparator);
+	if ( !autoCompleteContext.documentText.match(regexIncludeTextSeparator) ) {
+		completionItems.push(includeTextSeparator);
+	}
 }

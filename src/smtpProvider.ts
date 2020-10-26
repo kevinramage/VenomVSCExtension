@@ -10,7 +10,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	withtls.insertText = "withtls: true";
 	withtls.documentation = "With TLS (Optional)";
 	withtls.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(withtls);
+	if ( !autoCompleteContext.documentText.match(regexWithTLS) ) {
+		completionItems.push(withtls);
+	}
 
 	// host
 	const regexHost = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}host\\s*:.*");
@@ -18,7 +20,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	host.insertText = "host:";
 	host.documentation = "Host (Mandatory)";
 	host.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(host);
+	if ( !autoCompleteContext.documentText.match(regexHost) ) {
+		completionItems.push(host);
+	}
 
 	// port
 	const regexPort = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}port\\s*:.*");
@@ -26,7 +30,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	port.insertText = "port: 465";
 	port.documentation = "Port (Optional)";
 	port.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(port);
+	if ( !autoCompleteContext.documentText.match(regexPort) ) {
+		completionItems.push(port);
+	}
 
 	// user
 	const regexUser = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}user\\s*:.*");
@@ -34,7 +40,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	user.insertText = "user:";
 	user.documentation = "user (Optional)";
 	user.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(user);
+	if ( !autoCompleteContext.documentText.match(regexUser) ) {
+		completionItems.push(user);
+	}
 
 	// password
 	const regexPassword = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}password\\s*:.*");
@@ -42,7 +50,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	password.insertText = "password:";
 	password.documentation = "Password (Optional)";
 	password.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(password);
+	if ( !autoCompleteContext.documentText.match(regexPassword) ) {
+		completionItems.push(password);
+	}
 
 	// to
 	const regexTo = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}to\\s*:.*");
@@ -50,7 +60,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	to.insertText = "to:";
 	to.documentation = "To (Mandatory)";
 	to.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(to);
+	if ( !autoCompleteContext.documentText.match(regexTo) ) {
+		completionItems.push(to);
+	}
 
 	// from
 	const regexFrom = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}from\\s*:.*");
@@ -58,7 +70,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	from.insertText = "from:";
 	from.documentation = "From (Mandatory)";
 	from.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(from);
+	if ( !autoCompleteContext.documentText.match(regexFrom) ) {
+		completionItems.push(from);
+	}
 
 	// subject
 	const regexSubject = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}subject\\s*:.*");
@@ -66,7 +80,9 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	subject.insertText = "subject:";
 	subject.documentation = "Subject (Optional)";
 	subject.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(subject);
+	if ( !autoCompleteContext.documentText.match(regexSubject) ) {
+		completionItems.push(subject);
+	}
 
 	// body
 	const regexBody = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}body\\s*:.*");
@@ -74,5 +90,7 @@ export const smtpProvider = function (completionItems : vscode.CompletionItem[],
 	body.insertText = "body:";
 	body.documentation = "Body (Mandatory)";
 	body.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(body);
+	if ( !autoCompleteContext.documentText.match(regexBody) ) {
+		completionItems.push(body);
+	}
 }

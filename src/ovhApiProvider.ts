@@ -10,7 +10,9 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	method.insertText = "method:";
 	method.documentation = "method (Optional)";
 	method.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(method);
+	if ( !autoCompleteContext.documentText.match(regexMethod) ) {
+		completionItems.push(method);
+	}
 
 	// path
 	const regexPath = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}path\\s*:.*");
@@ -18,7 +20,9 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	path.insertText = "path: /";
 	path.documentation = "path (Mandatory)";
 	path.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(path);
+	if ( !autoCompleteContext.documentText.match(regexPath) ) {
+		completionItems.push(path);
+	}
 
 	// noAuth
 	const regexNoAuth = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}noAuth\\s*:.*");
@@ -26,7 +30,9 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	noAuth.insertText = "noAuth:";
 	noAuth.documentation = "noAuth (Optional)";
 	noAuth.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(noAuth);
+	if ( !autoCompleteContext.documentText.match(regexNoAuth) ) {
+		completionItems.push(noAuth);
+	}
 
 	// body
 	const regexBody = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}body\\s*:.*");
@@ -34,7 +40,9 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	body.insertText = "body:";
 	body.documentation = "body (Optional)";
 	body.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(body);
+	if ( !autoCompleteContext.documentText.match(regexBody) ) {
+		completionItems.push(body);
+	}
 
 	// bodyFile
 	const regexBodyFile = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}bodyFile\\s*:.*");
@@ -42,7 +50,9 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	bodyFile.insertText = "bodyFile:";
 	bodyFile.documentation = "bodyFile (Optional)";
 	bodyFile.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(bodyFile);
+	if ( !autoCompleteContext.documentText.match(regexBodyFile) ) {
+		completionItems.push(bodyFile);
+	}
 
 	// headers
 	const regexHeaders = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}headers\\s*:.*");
@@ -50,5 +60,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	headers.insertText = "headers:";
 	headers.documentation = "headers (Optional)";
 	headers.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(headers);
+	if ( !autoCompleteContext.documentText.match(regexHeaders) ) {
+		completionItems.push(headers);
+	}
 }

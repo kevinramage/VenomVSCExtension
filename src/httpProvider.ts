@@ -10,7 +10,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	method.insertText = "method: GET" + Utils.NewLine;
 	method.documentation = "Request method (Optional)";
 	method.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(method);
+	if ( !autoCompleteContext.documentText.match(regexMethod) ) {
+		completionItems.push(method);
+	}
 
 	// Url
 	const regexUrl = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}url\\s*:.*");
@@ -18,7 +20,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	url.insertText = "url:"
 	url.documentation = "Url (Mandatory)";
 	url.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(url);
+	if ( !autoCompleteContext.documentText.match(regexUrl) ) {
+		completionItems.push(url);
+	}
 
 	// Unix sock
 	const regexUnixSock = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}unix_sock\\s*:.*");
@@ -26,7 +30,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	unixSock.insertText = "unix_sock:"
 	unixSock.documentation = "Unix Sock (Optional)";
 	unixSock.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(unixSock);
+	if ( !autoCompleteContext.documentText.match(regexUnixSock) ) {
+		completionItems.push(unixSock);
+	}
 
 	// Path
 	const regexPath = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}path\\s*:.*");
@@ -34,7 +40,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	path.insertText = "path: /"
 	path.documentation = "Path (Optional)";
 	path.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(path);
+	if ( !autoCompleteContext.documentText.match(regexPath) ) {
+		completionItems.push(path);
+	}
 
 	// Body
 	const regexBody = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}body\\s*:.*");
@@ -42,7 +50,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	body.insertText = "body: "
 	body.documentation = "Body (Optional)";
 	body.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(body);
+	if ( !autoCompleteContext.documentText.match(regexBody) ) {
+		completionItems.push(body);
+	}
 
 	// Body file
 	const regexBodyFile = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}bodyFile\\s*:.*");
@@ -50,7 +60,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	bodyFile.insertText = "bodyFile: "
 	bodyFile.documentation = "Body file (Optional)";
 	bodyFile.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(bodyFile);
+	if ( !autoCompleteContext.documentText.match(regexBodyFile) ) {
+		completionItems.push(bodyFile);
+	}
 
 	// Headers
 	const regexHeaders = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}headers\\s*:.*");
@@ -58,7 +70,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	headers.insertText = "headers: " + Utils.NewLine + autoCompleteContext.tab;
 	headers.documentation = "Headers (Optional)";
 	headers.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(headers);
+	if ( !autoCompleteContext.documentText.match(regexHeaders) ) {
+		completionItems.push(headers);
+	}
 
 	// Proxy
 	const regexProxy = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}proxy\\s*:.*");
@@ -66,7 +80,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	proxy.insertText = "proxy: "
 	proxy.documentation = "Proxy (Optional)";
 	proxy.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(proxy);
+	if ( !autoCompleteContext.documentText.match(regexProxy) ) {
+		completionItems.push(proxy);
+	}
 
 	// Ignore verify SSL
 	const regexIgnoreVerifySSL = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}ignore_verify_ssl\\s*:.*");
@@ -74,7 +90,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	ignoreVerifySSL.insertText = "ignore_verify_ssl: false";
 	ignoreVerifySSL.documentation = "Ignore verify SSL (Optional)";
 	ignoreVerifySSL.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(ignoreVerifySSL);
+	if ( !autoCompleteContext.documentText.match(regexIgnoreVerifySSL) ) {
+		completionItems.push(ignoreVerifySSL);
+	}
 
 	// Basic auth user
 	const regexBasicAuthUser = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}basic_auth_user\\s*:.*");
@@ -82,7 +100,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	basicAuthUser.insertText = "basic_auth_user: ";
 	basicAuthUser.documentation = "Basic auth user (Optional)";
 	basicAuthUser.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(basicAuthUser);
+	if ( !autoCompleteContext.documentText.match(regexBasicAuthUser) ) {
+		completionItems.push(basicAuthUser);
+	}
 
 	// Basic auth password
 	const regexBasicAuthPassword = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}basic_auth_password\\s*:.*");
@@ -90,7 +110,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	basicAuthPassword.insertText = "basic_auth_password: ";
 	basicAuthPassword.documentation = "Basic auth password (Optional)";
 	basicAuthPassword.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(basicAuthPassword);
+	if ( !autoCompleteContext.documentText.match(regexBasicAuthPassword) ) {
+		completionItems.push(basicAuthPassword);
+	}
 
 	// No follow redirect
 	const regexNoFollowRedirect = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}no_follow_redirect\\s*:.*");
@@ -98,7 +120,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	noFollowRedirect.insertText = "no_follow_redirect: true";
 	noFollowRedirect.documentation = "No follow redirect (Optional)";
 	noFollowRedirect.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(noFollowRedirect);
+	if ( !autoCompleteContext.documentText.match(regexNoFollowRedirect) ) {
+		completionItems.push(noFollowRedirect);
+	}
 
 	// Skip body
 	const regexSkipBody = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}skip_body\\s*:.*");
@@ -106,7 +130,9 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	skipBody.insertText = "skip_body: false";
 	skipBody.documentation = "Skip body (Optional)";
 	skipBody.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(skipBody);
+	if ( !autoCompleteContext.documentText.match(regexSkipBody) ) {
+		completionItems.push(skipBody);
+	}
 
 	// Skip headers
 	const regexSkipHeaders = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}skip_headers\\s*:.*");
@@ -114,5 +140,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	skipHeaders.insertText = "skip_headers: false";
 	skipHeaders.documentation = "Skip headers (Optional)";
 	skipHeaders.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(skipHeaders);
+	if ( !autoCompleteContext.documentText.match(regexSkipHeaders) ) {
+		completionItems.push(skipHeaders);
+	}
 }

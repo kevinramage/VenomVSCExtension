@@ -10,7 +10,9 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	host.insertText = "host:";
 	host.documentation = "Host (Mandatory)";
 	host.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(host);
+	if ( !autoCompleteContext.documentText.match(regexHost) ) {
+		completionItems.push(host);
+	}
 
 	// Command
 	const regexCommand = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}command\\s*:.*");
@@ -18,7 +20,9 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	command.insertText = "command:";
 	command.documentation = "Command (Mandatory)";
 	command.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(command);
+	if ( !autoCompleteContext.documentText.match(regexCommand) ) {
+		completionItems.push(command);
+	}
 
 	// User
 	const regexUser = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}user\\s*:.*");
@@ -26,7 +30,9 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	user.insertText = "user:";
 	user.documentation = "User (Optional)";
 	user.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(user);
+	if ( !autoCompleteContext.documentText.match(regexUser) ) {
+		completionItems.push(user);
+	}
 
 	// Password
 	const regexPassword = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}password\\s*:.*");
@@ -34,7 +40,9 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	password.insertText = "password:";
 	password.documentation = "Password (Optional)";
 	password.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(password);
+	if ( !autoCompleteContext.documentText.match(regexPassword) ) {
+		completionItems.push(password);
+	}
 
 	// privatekey
 	const regexPrivateKey = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}privatekey\\s*:.*");
@@ -42,5 +50,7 @@ export const sshProvider = function (completionItems : vscode.CompletionItem[], 
 	privatekey.insertText = "privatekey:";
 	privatekey.documentation = "Private Key (Optional)";
 	privatekey.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(privatekey);
+	if ( !autoCompleteContext.documentText.match(regexPrivateKey) ) {
+		completionItems.push(privatekey);
+	}
 }

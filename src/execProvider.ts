@@ -10,5 +10,7 @@ export const execProvider = function (completionItems : vscode.CompletionItem[],
 	script.insertText = "script: ";
 	script.documentation = "Exec script (Mandatory)";
 	script.commitCharacters = [ Utils.NewLine ];
-	completionItems.push(script);
+	if ( !autoCompleteContext.documentText.match(regexScript) ) {
+		completionItems.push(script);
+	}
 }
