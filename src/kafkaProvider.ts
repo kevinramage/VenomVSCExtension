@@ -106,6 +106,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	}
 
 	// timeout
+	/*
 	const regexTimeout = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}timeout\\s*:.*");
 	const timeout = new vscode.CompletionItem("timeout");
 	timeout.insertText = "timeout:";
@@ -114,6 +115,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	if ( !autoCompleteContext.localText.match(regexTimeout) ) {
 		completionItems.push(timeout);
 	}
+	*/
 
 	// message_limit
 	const regexMessageLimit = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}message_limit\\s*:.*");

@@ -32,6 +32,27 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		testStepType.documentation = "Type (Default exec)";
 		testStepType.commitCharacters = [ Utils.NewLine ];
 
+		// Timeout
+		const regexTimeout = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}timeout\\s*:.*");
+		const testStepTimeout = new vscode.CompletionItem("timeout");
+		testStepTimeout.insertText = "timeout";
+		testStepTimeout.documentation = "Step timeout";
+		testStepTimeout.commitCharacters = [ Utils.NewLine ];
+
+		// Delay
+		const regexDelay = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}delay\\s*:.*");
+		const testStepDelay = new vscode.CompletionItem("delay");
+		testStepDelay.insertText = "delay";
+		testStepDelay.documentation = "delay";
+		testStepDelay.commitCharacters = [ Utils.NewLine ];
+
+		// Retry
+		const regexRetry = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}retry\\s*:.*");
+		const testStepRetry = new vscode.CompletionItem("retry");
+		testStepRetry.insertText = "retry";
+		testStepRetry.documentation = "Retry";
+		testStepRetry.commitCharacters = [ Utils.NewLine ];
+
 		// Assertions
 		const regexAssertions = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}assertions\\s*:.*");
 		const testStepAssertions = new vscode.CompletionItem("assertions");
@@ -43,8 +64,24 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			 autoCompleteContext.currentParent == PARENT.STEPS &&
 			 autoCompleteContext.currentTab == 2 ) {
 
+			// Type
 			if ( !autoCompleteContext.localText.match(regexType) ) {
 				completionItems.push(testStepType);
+			}
+
+			// Timeout
+			if ( !autoCompleteContext.localText.match(regexTimeout) ) {
+				completionItems.push(testStepTimeout);
+			}
+
+			// Delay
+			if ( !autoCompleteContext.localText.match(regexDelay) ) {
+				completionItems.push(testStepDelay);
+			}
+
+			// Retry
+			if ( !autoCompleteContext.localText.match(regexRetry) ) {
+				completionItems.push(testStepRetry);
 			}
 
 			// dbfixtures
