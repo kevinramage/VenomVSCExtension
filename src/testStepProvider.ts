@@ -28,7 +28,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Type
 		const regexType = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}type\\s*:.*");
 		const testStepType = new vscode.CompletionItem("type");
-		testStepType.insertText = new vscode.SnippetString("type: ${1|dbfixtures,http,imap,kafka,ovhapi,readfile,redis,smtp,ssh,web,grpc,rabbitmq,sql|}");
+		testStepType.insertText = new vscode.SnippetString("type: ${1|dbfixtures,exec,http,imap,kafka,ovhapi,readfile,redis,smtp,ssh,web,grpc,rabbitmq,sql|}");
 		testStepType.documentation = "Type (Default exec)";
 		testStepType.commitCharacters = [ Utils.NewLine ];
 
