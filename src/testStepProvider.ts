@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { AutoCompleteContext, PARENT, TAB } from './autoCompleteContext';
+import { AutoCompleteContext, CONTEXT_TYPE, PARENT, TAB } from './autoCompleteContext';
 import { dbFixturesProvider } from './dbFixturesProvider';
 import { execProvider } from './execProvider';
 import { grpcProvider } from './grpcProvider';
@@ -91,7 +91,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			}
 
 			// Actions
-			if ( !autoCompleteContext.localText.match(regexActions) ) {
+			if ( !autoCompleteContext.localText.match(regexActions) && autoCompleteContext.contextType == CONTEXT_TYPE.WEB ) {
 				completionItems.push(testStepActions);
 			}
 

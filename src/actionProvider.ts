@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { AutoCompleteContext, PARENT, TAB } from './autoCompleteContext';
+import { AutoCompleteContext, CONTEXT_TYPE, PARENT, TAB } from './autoCompleteContext';
 import { Utils } from './utils';
 
 export const actionProvider = vscode.languages.registerCompletionItemProvider('yaml', {

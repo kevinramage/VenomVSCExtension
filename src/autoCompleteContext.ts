@@ -37,6 +37,12 @@ export module TAB {
 	export const TESTCONTEXT_PREFS = 3;
 }
 
+export module CONTEXT_TYPE {
+	export const DEFAULT = "default";
+	export const REDIS = "redis";
+	export const WEB = "web";
+}
+
 export class AutoCompleteContext {
 	
 	private _tab : string = "  ";
@@ -45,6 +51,7 @@ export class AutoCompleteContext {
 	private _isAutoCompletePossible : boolean = false;
 	private _documentText : string = "";
 	private _localText : string = "";
+	private _contextType : string = "";
 
 	private _name : string = "";
 	private _type : string = "";
@@ -62,9 +69,10 @@ export class AutoCompleteContext {
 		// Get current line
 		this.getCurrentLine(this._documentText);
 		
-		// Detect
+		// Collect informations
 		this.computeLocalText(this._documentText, contentAfter);
 		this.computeLastParent(this._documentText);
+		this.computeTestCaseContext(this._documentText, contentAfter)
 		this.detectName(this._documentText);
 		this.detectType(this._documentText);
 	}
@@ -171,6 +179,53 @@ export class AutoCompleteContext {
 		this._localText = result.join(Utils.NewLine);
 	}
 
+	private computeLocalTab(contentBefore: string, contentAfter: string, tab: number) {
+		var result : Array<string> = [];
+
+		// Lines before
+		if ( contentBefore && contentBefore.length > 0 ) {
+			const lines = contentBefore.split('\n');
+			const currentTab = this.computeLineTabulation(lines[lines.length - 1]);
+			if (currentTab >= tab ) {
+				for ( var i = lines.length - 1; i >= 0; i-- ) {
+					const lineTab = this.computeLineTabulation(lines[i]);
+					if ( lineTab >= tab ) {
+						result.push(lines[i]);
+					}
+				}
+			}
+			result = result.reverse();
+		}
+
+		// Lines after
+		if ( contentAfter && contentAfter.length > 0 ) {
+			const lines = contentAfter.split('\n');
+			const currentTab = this.computeLineTabulation(lines[0]);
+			if (currentTab >= tab ) {
+				for ( var i = 1; i < lines.length; i++ ) {
+					const lineTab = this.computeLineTabulation(lines[i]);
+					if ( lineTab >= tab ) {
+						result.push(lines[i]);
+					}
+				}
+			}
+		}
+
+		return result.join(Utils.NewLine);	
+	}
+
+	public computeTestCaseContext(contentBefore: string, contentAfter: string) {
+		this._contextType = "";
+		const localText = this.computeLocalTab(contentBefore, contentAfter, TAB.TESTCASE);
+		if ( localText.length > 0 ) {
+			const regex = /context\s*:\r*\n\s*name:\s*(?<type>default|redis|web)/g;
+			const match = regex.exec(localText);
+			if ( match && match.groups ) {
+				this._contextType = match.groups.type;
+			}
+		}
+	}
+
 	public get tab() {
 		return this._tab;
 	}
@@ -195,5 +250,9 @@ export class AutoCompleteContext {
 	}
 	public get type() {
 		return this._type;
+	}
+
+	public get contextType() {
+		return this._contextType;
 	}
 }
