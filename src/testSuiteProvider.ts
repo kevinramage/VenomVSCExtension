@@ -14,29 +14,33 @@ export const testSuiteProvider = vscode.languages.registerCompletionItemProvider
 		// Test suite name
 		const testSuiteName = new vscode.CompletionItem("name");
 		testSuiteName.kind = vscode.CompletionItemKind.Constructor;
+		testSuiteName.detail = "Mandatory";
 		testSuiteName.insertText = "name: testSuite1";
-		testSuiteName.documentation = new vscode.MarkdownString("Test suite name \n <br/> \r\n (Mandatory)", true);
+		testSuiteName.documentation = new vscode.MarkdownString("Test suite name", true);
 		testSuiteName.commitCharacters = [ Utils.NewLine ];
 
 		// Test cases
 		const testCases = new vscode.CompletionItem("testCases");
 		testCases.kind = vscode.CompletionItemKind.Class;
+		testCases.detail = "Mandatory";
 		testCases.insertText = "testcases:" + Utils.NewLine + "- ";
-		testCases.documentation = "Test cases (Mandatory)";
+		testCases.documentation = "Test cases";
 		testCases.commitCharacters = [ Utils.NewLine ];
 
 		// Version
 		const testSuiteVersion = new vscode.CompletionItem("version");
 		testSuiteVersion.kind = vscode.CompletionItemKind.Property;
+		testSuiteVersion.detail = "Optionnal";
 		testSuiteVersion.insertText = "version: 0.28.0";
-		testSuiteVersion.documentation = "Version (Optionnal)";
+		testSuiteVersion.documentation = "Version";
 		testSuiteVersion.commitCharacters = [ Utils.NewLine ];
 
 		// Variables
 		const testSuiteVariables = new vscode.CompletionItem("vars");
 		testSuiteVariables.kind = vscode.CompletionItemKind.Class;
+		testSuiteVariables.detail = "Optionnal";
 		testSuiteVariables.insertText = "vars:" + Utils.NewLine + "- ";
-		testSuiteVariables.documentation = "Variables (Optionnal)";
+		testSuiteVariables.documentation = "Variables";
 		testSuiteVariables.commitCharacters = [ Utils.NewLine ];
 
 		// Regex
