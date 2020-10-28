@@ -77,6 +77,7 @@ export const kafkaProvider = function (completionItems : vscode.CompletionItem[]
 	// client_type
 	const regexClientType = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}client_type\\s*:.*");
 	const client_type = new vscode.CompletionItem("client_type");
+	client_type.kind = vscode.CompletionItemKind.Enum;
 	client_type.insertText = new vscode.SnippetString("client_type: ${1|producer,consumer|}");
 	client_type.documentation = "client_type (Optional)";
 	client_type.commitCharacters = [ Utils.NewLine ];

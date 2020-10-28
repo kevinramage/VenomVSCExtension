@@ -14,6 +14,7 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 		// Test case name
 		const regexName = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length + "}name\\s*:.*");
 		const testCaseName = new vscode.CompletionItem("name");
+		testCaseName.kind = vscode.CompletionItemKind.Constructor;
 		testCaseName.insertText = "name: testCase1";
 		testCaseName.documentation = "Test case name";
 		testCaseName.commitCharacters = [Utils.NewLine];
@@ -21,6 +22,7 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 		// Test case steps
 		const regexSteps = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length + "}steps\\s*:.*");
 		const testCaseSteps = new vscode.CompletionItem("steps");
+		testCaseSteps.kind = vscode.CompletionItemKind.Class;
 		testCaseSteps.insertText = "steps:" + Utils.NewLine + "- ";
 		testCaseSteps.documentation = "Test case steps";
 		testCaseSteps.commitCharacters = [Utils.NewLine];
@@ -28,6 +30,7 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 		// Context
 		const regexContext = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length + "}context\\s*:.*");
 		const testCaseContext = new vscode.CompletionItem("context");
+		testCaseContext.kind = vscode.CompletionItemKind.Module;
 		testCaseContext.insertText = "context:" + Utils.NewLine + autoCompleteContext.tab;
 		testCaseContext.documentation = "Test case context";
 		testCaseContext.commitCharacters = [Utils.NewLine];

@@ -67,6 +67,7 @@ export const httpProvider = function (completionItems : vscode.CompletionItem[],
 	// Headers
 	const regexHeaders = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}headers\\s*:.*");
 	const headers = new vscode.CompletionItem("headers");
+	headers.kind = vscode.CompletionItemKind.Module;
 	headers.insertText = "headers: " + Utils.NewLine + autoCompleteContext.tab;
 	headers.documentation = "Headers (Optional)";
 	headers.commitCharacters = [ Utils.NewLine ];

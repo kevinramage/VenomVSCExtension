@@ -27,6 +27,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Type
 		const regexType = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}type\\s*:.*");
 		const testStepType = new vscode.CompletionItem("type");
+		testStepType.kind = vscode.CompletionItemKind.Enum;
 		testStepType.insertText = new vscode.SnippetString("type: ${1|dbfixtures,exec,http,imap,kafka,ovhapi,readfile,redis,smtp,ssh,web,grpc,rabbitmq,sql|}");
 		testStepType.documentation = "Type (Default exec)";
 		testStepType.commitCharacters = [ Utils.NewLine ];
@@ -34,6 +35,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Timeout
 		const regexTimeout = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}timeout\\s*:.*");
 		const testStepTimeout = new vscode.CompletionItem("timeout");
+		testStepTimeout.kind = vscode.CompletionItemKind.Property;
 		testStepTimeout.insertText = "timeout";
 		testStepTimeout.documentation = "Step timeout";
 		testStepTimeout.commitCharacters = [ Utils.NewLine ];
@@ -41,6 +43,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Delay
 		const regexDelay = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}delay\\s*:.*");
 		const testStepDelay = new vscode.CompletionItem("delay");
+		testStepDelay.kind = vscode.CompletionItemKind.Property;
 		testStepDelay.insertText = "delay";
 		testStepDelay.documentation = "delay";
 		testStepDelay.commitCharacters = [ Utils.NewLine ];
@@ -48,6 +51,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Retry
 		const regexRetry = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}retry\\s*:.*");
 		const testStepRetry = new vscode.CompletionItem("retry");
+		testStepRetry.kind = vscode.CompletionItemKind.Property;
 		testStepRetry.insertText = "retry";
 		testStepRetry.documentation = "Retry";
 		testStepRetry.commitCharacters = [ Utils.NewLine ];
@@ -55,6 +59,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Assertions
 		const regexAssertions = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}assertions\\s*:.*");
 		const testStepAssertions = new vscode.CompletionItem("assertions");
+		testStepAssertions.kind = vscode.CompletionItemKind.Class;
 		testStepAssertions.insertText = "assertions: " + Utils.NewLine + "- ";
 		testStepAssertions.documentation = "Assertions";
 		testStepAssertions.commitCharacters = [ Utils.NewLine ];
@@ -62,6 +67,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		// Actions
 		const regexActions = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}actions\\s*:.*");
 		const testStepActions = new vscode.CompletionItem("actions");
+		testStepActions.kind = vscode.CompletionItemKind.Class;
 		testStepActions.insertText = "actions: " + Utils.NewLine + "- ";
 		testStepActions.documentation = "actions";
 		testStepActions.commitCharacters = [ Utils.NewLine ];

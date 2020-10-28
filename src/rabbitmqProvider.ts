@@ -37,6 +37,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	// clientType
 	const regexClientType = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}clientType\\s*:.*");
 	const clientType = new vscode.CompletionItem("clientType");
+	clientType.kind = vscode.CompletionItemKind.Enum;
 	clientType.insertText = new vscode.SnippetString("clientType: ${1|subscriber,publisher|}")
 	clientType.documentation = "Client type (Mandatory)";
 	clientType.commitCharacters = [ Utils.NewLine ];

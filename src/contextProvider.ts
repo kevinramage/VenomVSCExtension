@@ -14,6 +14,7 @@ export const contextProvider = vscode.languages.registerCompletionItemProvider('
 		// Name (default, web, redis)
 		const regexName = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}name\\s*:.*");
 		const contextName = new vscode.CompletionItem("name");
+		contextName.kind = vscode.CompletionItemKind.Enum;
 		contextName.insertText = new vscode.SnippetString("name: ${1|default,web,redis|}");
 		contextName.documentation = "Test case name";
 		contextName.commitCharacters = [Utils.NewLine];
@@ -42,6 +43,7 @@ export const contextProvider = vscode.languages.registerCompletionItemProvider('
 		// Driver
 		const regexDriver = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}driver\\s*:.*");
 		const contextDriver = new vscode.CompletionItem("driver");
+		contextDriver.kind = vscode.CompletionItemKind.Enum;
 		contextDriver.insertText = new vscode.SnippetString("driver: ${1|chrome,gecko,phantomJS|}");
 		contextDriver.documentation = "Web context driver";
 		contextDriver.commitCharacters = [Utils.NewLine];
@@ -49,6 +51,7 @@ export const contextProvider = vscode.languages.registerCompletionItemProvider('
 		// Args
 		const regexArgs = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}args\\s*:.*");
 		const contextArgs = new vscode.CompletionItem("args");
+		contextArgs.kind = vscode.CompletionItemKind.Class;
 		contextArgs.insertText = "args:\r\n- ";
 		contextArgs.documentation = "Web context args";
 		contextArgs.commitCharacters = [Utils.NewLine];
@@ -56,6 +59,7 @@ export const contextProvider = vscode.languages.registerCompletionItemProvider('
 		// Prefs
 		const regexPrefs = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}prefs\\s*:.*");
 		const contextPrefs = new vscode.CompletionItem("prefs");
+		contextPrefs.kind = vscode.CompletionItemKind.Module;
 		contextPrefs.insertText = "prefs:\r\n" + autoCompleteContext.tab;
 		contextPrefs.documentation = "Web context prefs";
 		contextPrefs.commitCharacters = [Utils.NewLine];

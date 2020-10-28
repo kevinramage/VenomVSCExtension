@@ -7,6 +7,7 @@ export const dbFixturesProvider = function (completionItems : vscode.CompletionI
 	// Database
 	const regexDatabase = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}database\\s*:.*");
 	const database = new vscode.CompletionItem("database");
+	database.kind = vscode.CompletionItemKind.Enum;
 	database.insertText = new vscode.SnippetString("database: ${1|mysql,postgres|}");
 	database.documentation = "Database (Mandatory)";
 	database.commitCharacters = [ Utils.NewLine ];

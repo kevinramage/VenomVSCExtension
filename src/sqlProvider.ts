@@ -7,6 +7,7 @@ export const sqlProvider = function (completionItems : vscode.CompletionItem[], 
 	// driver
 	const regexDriver = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}driver\\s*:.*");
 	const driver = new vscode.CompletionItem("driver");
+	driver.kind = vscode.CompletionItemKind.Enum;
 	driver.insertText = new vscode.SnippetString("driver: ${1|mysql,postgres|}");
 	driver.documentation = "Driver (Mandatory)";
 	driver.commitCharacters = [ Utils.NewLine ];

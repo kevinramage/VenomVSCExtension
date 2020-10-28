@@ -13,24 +13,28 @@ export const testSuiteProvider = vscode.languages.registerCompletionItemProvider
 
 		// Test suite name
 		const testSuiteName = new vscode.CompletionItem("name");
+		testSuiteName.kind = vscode.CompletionItemKind.Constructor;
 		testSuiteName.insertText = "name: testSuite1";
-		testSuiteName.documentation = "Test suite name (Mandatory)";
+		testSuiteName.documentation = new vscode.MarkdownString("Test suite name \n <br/> \r\n (Mandatory)", true);
 		testSuiteName.commitCharacters = [ Utils.NewLine ];
 
 		// Test cases
 		const testCases = new vscode.CompletionItem("testCases");
+		testCases.kind = vscode.CompletionItemKind.Class;
 		testCases.insertText = "testcases:" + Utils.NewLine + "- ";
 		testCases.documentation = "Test cases (Mandatory)";
 		testCases.commitCharacters = [ Utils.NewLine ];
 
 		// Version
 		const testSuiteVersion = new vscode.CompletionItem("version");
+		testSuiteVersion.kind = vscode.CompletionItemKind.Property;
 		testSuiteVersion.insertText = "version: 0.28.0";
 		testSuiteVersion.documentation = "Version (Optionnal)";
 		testSuiteVersion.commitCharacters = [ Utils.NewLine ];
 
 		// Variables
 		const testSuiteVariables = new vscode.CompletionItem("vars");
+		testSuiteVariables.kind = vscode.CompletionItemKind.Class;
 		testSuiteVariables.insertText = "vars:" + Utils.NewLine + "- ";
 		testSuiteVariables.documentation = "Variables (Optionnal)";
 		testSuiteVariables.commitCharacters = [ Utils.NewLine ];

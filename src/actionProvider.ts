@@ -13,24 +13,28 @@ export const actionProvider = vscode.languages.registerCompletionItemProvider('y
 
 		// Click
 		const testCaseClick = new vscode.CompletionItem("click");
+		testCaseClick.kind = vscode.CompletionItemKind.Module;
 		testCaseClick.insertText = "click:" + Utils.NewLine;
 		testCaseClick.documentation = "Click on HTML element";
 		testCaseClick.commitCharacters = [Utils.NewLine];
 
 		// Fill
 		const testCaseFill = new vscode.CompletionItem("fill");
+		testCaseFill.kind = vscode.CompletionItemKind.Module;
 		testCaseFill.insertText = "fill:" + Utils.NewLine;
 		testCaseFill.documentation = "Fill a HTML input element";
 		testCaseFill.commitCharacters = [Utils.NewLine];
 
 		// Find
 		const testCaseFind = new vscode.CompletionItem("find");
+		testCaseFind.kind = vscode.CompletionItemKind.Property;
 		testCaseFind.insertText = "find: ";
 		testCaseFind.documentation = "Identify a HTML element with CSS selector";
 		testCaseFind.commitCharacters = [Utils.NewLine];
 
 		// Navigate
 		const testCaseNavigate = new vscode.CompletionItem("navigate");
+		testCaseNavigate.kind = vscode.CompletionItemKind.Module;
 		testCaseNavigate.insertText = "navigate:" + Utils.NewLine;
 		testCaseNavigate.documentation = "Navigate to an url";
 		testCaseNavigate.commitCharacters = [Utils.NewLine];
@@ -38,53 +42,62 @@ export const actionProvider = vscode.languages.registerCompletionItemProvider('y
 		// Wait
 		const testCaseWait = new vscode.CompletionItem("wait");
 		testCaseWait.insertText = "wait: ";
+		testCaseWait.kind = vscode.CompletionItemKind.Property;
 		testCaseWait.documentation = "Delay to wait (in second) before the next action";
 		testCaseWait.commitCharacters = [Utils.NewLine];
 
 		// ConfirmPopup
 		const testCaseConfirmPopup = new vscode.CompletionItem("confirmPopup");
+		testCaseConfirmPopup.kind = vscode.CompletionItemKind.Property;
 		testCaseConfirmPopup.insertText = "confirmPopup: true";
 		testCaseConfirmPopup.documentation = "Click on confirm button on window modal dialog. Set this flag to true to activate this feature";
 		testCaseConfirmPopup.commitCharacters = [Utils.NewLine];
 
 		// CancelPopup
 		const testCaseCancelPopup = new vscode.CompletionItem("cancelPopup");
+		testCaseCancelPopup.kind = vscode.CompletionItemKind.Property;
 		testCaseCancelPopup.insertText = "cancelPopup: true";
 		testCaseCancelPopup.documentation = "Click on cancel button on window modal dialog. Set this flag to true to activate this feature";
 		testCaseCancelPopup.commitCharacters = [Utils.NewLine];
 
 		// Select
 		const testCaseSelect = new vscode.CompletionItem("select");
+		testCaseSelect.kind = vscode.CompletionItemKind.Module;
 		testCaseSelect.insertText = "select:" + Utils.NewLine;
 		testCaseSelect.documentation = "Select a value on HTML select element";
 		testCaseSelect.commitCharacters = [Utils.NewLine];
 
 		// UploadFile
 		const testCaseUploadFile = new vscode.CompletionItem("uploadFile");
+		testCaseUploadFile.kind = vscode.CompletionItemKind.Module;
 		testCaseUploadFile.insertText = "uploadFile:" + Utils.NewLine;
 		testCaseUploadFile.documentation = "Upload a file on HTML input upload element";
 		testCaseUploadFile.commitCharacters = [Utils.NewLine];
 
 		// SelectFrame
 		const testCaseSelectFrame = new vscode.CompletionItem("selectFrame");
+		testCaseSelectFrame.kind = vscode.CompletionItemKind.Module;
 		testCaseSelectFrame.insertText = "selectFrame:" + Utils.NewLine;
 		testCaseSelectFrame.documentation = "Select a frame / iframe to execute next actions on it";
 		testCaseSelectFrame.commitCharacters = [Utils.NewLine];
 
 		// SelectRootFrame
 		const testCaseSelectRootFrame = new vscode.CompletionItem("selectRootFrame");
+		testCaseSelectRootFrame.kind = vscode.CompletionItemKind.Property;
 		testCaseSelectRootFrame.insertText = "selectRootFrame: true";
 		testCaseSelectRootFrame.documentation = "Come back to root frame to execute next actions on it. Set this flag to true to activate this feature";
 		testCaseSelectRootFrame.commitCharacters = [Utils.NewLine];
 
 		// NextWindow
 		const testCaseNextWindow = new vscode.CompletionItem("nextWindow");
+		testCaseNextWindow.kind = vscode.CompletionItemKind.Property;
 		testCaseNextWindow.insertText = "nextWindow: true";
 		testCaseNextWindow.documentation = "Go to another window. Usefull to navigate through a popup. Set this flag to true to activate this feature";
 		testCaseNextWindow.commitCharacters = [Utils.NewLine];
 
 		// HistoryAction
 		const testCaseHistoryAction = new vscode.CompletionItem("historyAction");
+		testCaseHistoryAction.kind = vscode.CompletionItemKind.Enum;
 		testCaseHistoryAction.insertText = new vscode.SnippetString("historyAction: ${1|back,refresh,forward|}");
 		testCaseHistoryAction.documentation = "Simulate browser history navigation action (back, forward)";
 		testCaseHistoryAction.commitCharacters = [Utils.NewLine];
@@ -163,6 +176,7 @@ function addClick(completionItems : vscode.CompletionItem[]) {
 
 	// Find
 	const actionFind = new vscode.CompletionItem("find");
+	actionFind.kind = vscode.CompletionItemKind.Property;
 	actionFind.insertText = "find: ";
 	actionFind.documentation = "Identify a HTML element with CSS selector";
 	actionFind.commitCharacters = [Utils.NewLine];
@@ -170,6 +184,7 @@ function addClick(completionItems : vscode.CompletionItem[]) {
 
 	// Wait
 	const actionWait = new vscode.CompletionItem("wait");
+	actionWait.kind = vscode.CompletionItemKind.Property;
 	actionWait.insertText = "wait: ";
 	actionWait.documentation = "Delay to wait (in second) before the next action";
 	actionWait.commitCharacters = [Utils.NewLine];
@@ -180,6 +195,7 @@ function addFill(completionItems : vscode.CompletionItem[]) {
 	
 	// Find
 	const actionFind = new vscode.CompletionItem("find");
+	actionFind.kind = vscode.CompletionItemKind.Property;
 	actionFind.insertText = "find: ";
 	actionFind.documentation = "Identify a HTML element with CSS selector";
 	actionFind.commitCharacters = [Utils.NewLine];
@@ -187,6 +203,7 @@ function addFill(completionItems : vscode.CompletionItem[]) {
 
 	// Text
 	const actionText = new vscode.CompletionItem("text");
+	actionText.kind = vscode.CompletionItemKind.Property;
 	actionText.insertText = "text: ";
 	actionText.documentation = "Define the value to type on HTML input element";
 	actionText.commitCharacters = [Utils.NewLine];
@@ -194,6 +211,7 @@ function addFill(completionItems : vscode.CompletionItem[]) {
 
 	// Key
 	const actionKey = new vscode.CompletionItem("key");
+	actionKey.kind = vscode.CompletionItemKind.Property;
 	actionKey.insertText = "key: ";
 	actionKey.documentation = "Send a key code on HTML input element";
 	actionKey.commitCharacters = [Utils.NewLine];
@@ -204,6 +222,7 @@ function addNavigate(completionItems : vscode.CompletionItem[]) {
 
 	// Url
 	const actionUrl = new vscode.CompletionItem("url");
+	actionUrl.kind = vscode.CompletionItemKind.Property;
 	actionUrl.insertText = "url: ";
 	actionUrl.documentation = "Navigate to an url";
 	actionUrl.commitCharacters = [Utils.NewLine];
@@ -211,6 +230,7 @@ function addNavigate(completionItems : vscode.CompletionItem[]) {
 
 	// Reset
 	const actionReset = new vscode.CompletionItem("reset");
+	actionReset.kind = vscode.CompletionItemKind.Property;
 	actionReset.insertText = "reset: ";
 	actionReset.documentation = "Flag to indicate to reset the page state. Destroy all cookies";
 	actionReset.commitCharacters = [Utils.NewLine];
@@ -221,6 +241,7 @@ function addSelect(completionItems : vscode.CompletionItem[]) {
 
 	// Find
 	const actionFind = new vscode.CompletionItem("find");
+	actionFind.kind = vscode.CompletionItemKind.Property;
 	actionFind.insertText = "find: ";
 	actionFind.documentation = "Identify a HTML element with CSS selector";
 	actionFind.commitCharacters = [Utils.NewLine];
@@ -228,6 +249,7 @@ function addSelect(completionItems : vscode.CompletionItem[]) {
 
 	// Text
 	const actionText = new vscode.CompletionItem("text");
+	actionText.kind = vscode.CompletionItemKind.Property;
 	actionText.insertText = "text: ";
 	actionText.documentation = "Define the value to define on HTML select element";
 	actionText.commitCharacters = [Utils.NewLine];
@@ -235,6 +257,7 @@ function addSelect(completionItems : vscode.CompletionItem[]) {
 
 	// Wait
 	const actionWait = new vscode.CompletionItem("wait");
+	actionWait.kind = vscode.CompletionItemKind.Property;
 	actionWait.insertText = "wait: ";
 	actionWait.documentation = "Delay to wait (in second) before the next action";
 	actionWait.commitCharacters = [Utils.NewLine];
@@ -245,6 +268,7 @@ function addUploadFile(completionItems : vscode.CompletionItem[]) {
 
 	// Find
 	const actionFind = new vscode.CompletionItem("find");
+	actionFind.kind = vscode.CompletionItemKind.Property;
 	actionFind.insertText = "find: ";
 	actionFind.documentation = "Identify a HTML element with CSS selector";
 	actionFind.commitCharacters = [Utils.NewLine];
@@ -252,6 +276,7 @@ function addUploadFile(completionItems : vscode.CompletionItem[]) {
 
 	// Files
 	const actionText = new vscode.CompletionItem("files");
+	actionText.kind = vscode.CompletionItemKind.Class;
 	actionText.insertText = "files: " + Utils.NewLine;
 	actionText.documentation = "Define the files to upload. Provide the file path";
 	actionText.commitCharacters = [Utils.NewLine];
@@ -259,6 +284,7 @@ function addUploadFile(completionItems : vscode.CompletionItem[]) {
 
 	// Wait
 	const actionWait = new vscode.CompletionItem("wait");
+	actionWait.kind = vscode.CompletionItemKind.Property;
 	actionWait.insertText = "wait: ";
 	actionWait.documentation = "Delay to wait (in second) before the next action";
 	actionWait.commitCharacters = [Utils.NewLine];
@@ -269,6 +295,7 @@ function addSelectFrame(completionItems : vscode.CompletionItem[]) {
 
 	// Find
 	const actionFind = new vscode.CompletionItem("find");
+	actionFind.kind = vscode.CompletionItemKind.Property;
 	actionFind.insertText = "find: ";
 	actionFind.documentation = "Identify a HTML element with CSS selector";
 	actionFind.commitCharacters = [Utils.NewLine];
