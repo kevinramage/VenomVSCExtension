@@ -6,12 +6,35 @@ export module PARENT {
 	export const TESTCASES = "testcases";
 	export const STEPS = "steps";
 	export const CONTEXT = "context";
+	export const ACTIONS = "actions";
+	export const ACTION_CLICK = "click";
+	export const ACTION_FILL = "fill";
+	export const ACTION_NAVIGATE = "navigate";
+	export const ACTION_SELECT = "select";
+	export const ACTION_UPLOADFILE = "uploadFile";
+	export const ACTION_SELECTFRAME = "selectFrame";
 }
 
 export module NAME {
 	export const DEFAULT = "default";
 	export const REDIS = "redis";
 	export const WEB = "web";
+}
+
+export module TAB {
+	export const TESTSUITE = 0;
+	export const TESTCASE = 1;
+	export const TESTSTEP = 2;
+	export const TESTSTEP_ACTION = 3;
+	export const TESTSTEP_ACTION_CLICK = 4;
+	export const TESTSTEP_ACTION_FILL = 4;
+	export const TESTSTEP_ACTION_NAVIGATE = 4;
+	export const TESTSTEP_ACTION_SELECT = 4;
+	export const TESTSTEP_ACTION_UPLOADFILE = 4;
+	export const TESTSTEP_ACTION_SELECTFRAME = 4;
+	export const TESTCONTEXT = 2;
+	export const TESTCONTEXT_ARGS = 3;
+	export const TESTCONTEXT_PREFS = 3;
 }
 
 export class AutoCompleteContext {

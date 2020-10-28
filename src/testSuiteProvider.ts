@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { AutoCompleteContext, PARENT } from './autoCompleteContext';
+import { AutoCompleteContext, PARENT, TAB } from './autoCompleteContext';
 import { Utils } from './utils';
 
 export const testSuiteProvider = vscode.languages.registerCompletionItemProvider('yaml', {
@@ -43,7 +43,7 @@ export const testSuiteProvider = vscode.languages.registerCompletionItemProvider
 
 		if ( autoCompleteContext.isAutoCompletePossible &&
 			 autoCompleteContext.currentParent == PARENT.NO_PARENT &&
-			 autoCompleteContext.currentTab == 0 ) {
+			 autoCompleteContext.currentTab == TAB.TESTSUITE ) {
 			if ( !document.getText().match(testSuiteNameRegex) ) {
 				completionItems.push(testSuiteName);
 			}

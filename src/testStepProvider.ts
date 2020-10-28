@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { AutoCompleteContext, PARENT } from './autoCompleteContext';
+import { AutoCompleteContext, PARENT, TAB } from './autoCompleteContext';
 import { dbFixturesProvider } from './dbFixturesProvider';
 import { execProvider } from './execProvider';
 import { grpcProvider } from './grpcProvider';
@@ -14,7 +14,6 @@ import { smtpProvider } from './smtpProvider';
 import { sqlProvider } from './sqlProvider';
 import { sshProvider } from './sshProvider';
 import { Utils } from './utils';
-import { webProvider } from './webProvider';
 
 export const testStepProvider = vscode.languages.registerCompletionItemProvider('yaml', {
 	
@@ -60,9 +59,16 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		testStepAssertions.documentation = "Assertions";
 		testStepAssertions.commitCharacters = [ Utils.NewLine ];
 
+		// Actions
+		const regexActions = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}actions\\s*:.*");
+		const testStepActions = new vscode.CompletionItem("actions");
+		testStepActions.insertText = "actions: " + Utils.NewLine + "- ";
+		testStepActions.documentation = "actions";
+		testStepActions.commitCharacters = [ Utils.NewLine ];
+
 		if ( autoCompleteContext.isAutoCompletePossible &&
 			 autoCompleteContext.currentParent == PARENT.STEPS &&
-			 autoCompleteContext.currentTab == 2 ) {
+			 autoCompleteContext.currentTab == TAB.TESTSTEP ) {
 
 			// Type
 			if ( !autoCompleteContext.localText.match(regexType) ) {
@@ -82,6 +88,11 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			// Retry
 			if ( !autoCompleteContext.localText.match(regexRetry) ) {
 				completionItems.push(testStepRetry);
+			}
+
+			// Actions
+			if ( !autoCompleteContext.localText.match(regexActions) ) {
+				completionItems.push(testStepActions);
 			}
 
 			// dbfixtures
@@ -123,10 +134,6 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			// ssh
 			else if ( autoCompleteContext.type == "ssh" ) {
 				sshProvider(completionItems, autoCompleteContext);
-			}
-			// web
-			else if ( autoCompleteContext.type == "web" ) {
-				webProvider(completionItems, autoCompleteContext);
 			}
 			// grpc
 			else if ( autoCompleteContext.type == "grpc" ) {

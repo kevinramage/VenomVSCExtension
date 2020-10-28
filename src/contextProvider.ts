@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { AutoCompleteContext, NAME, PARENT } from './autoCompleteContext';
+import { AutoCompleteContext, NAME, PARENT, TAB } from './autoCompleteContext';
 import { Utils } from './utils';
 
 export const contextProvider = vscode.languages.registerCompletionItemProvider('yaml', {
@@ -77,7 +77,7 @@ export const contextProvider = vscode.languages.registerCompletionItemProvider('
 		// Detect context
 		if ( autoCompleteContext.isAutoCompletePossible &&
 			autoCompleteContext.currentParent == PARENT.CONTEXT &&
-			autoCompleteContext.currentTab == 2 ) {
+			autoCompleteContext.currentTab == TAB.TESTCONTEXT ) {
 
 			// Name
 			if ( document.getText().match(regexName) == null ) {
