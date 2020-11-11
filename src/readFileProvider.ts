@@ -10,7 +10,7 @@ export const readFileProvider = function (completionItems : vscode.CompletionIte
 	path.insertText = "path:";
 	path.documentation = "Path (Mandatory)";
 	path.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexPath) ) {
+	if ( !autoCompleteContext.localContext.match(regexPath) ) {
 		completionItems.push(path);
 	}
 }

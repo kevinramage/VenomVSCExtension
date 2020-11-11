@@ -73,8 +73,9 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 		const regexActions = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length*2 + "}actions\\s*:.*");
 		const testStepActions = new vscode.CompletionItem("actions");
 		testStepActions.kind = vscode.CompletionItemKind.Class;
+		testStepActions.keepWhitespace = true;
 		testStepActions.detail = "Optionnal";
-		testStepActions.insertText = "actions: " + Utils.NewLine + "- ";
+		testStepActions.insertText = "actions: " + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + "- ";
 		testStepActions.documentation = "actions";
 		testStepActions.commitCharacters = [ Utils.NewLine ];
 
@@ -83,27 +84,27 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			 autoCompleteContext.currentTab == TAB.TESTSTEP ) {
 
 			// Type
-			if ( !autoCompleteContext.localText.match(regexType) ) {
+			if ( !autoCompleteContext.localContext.match(regexType) ) {
 				completionItems.push(testStepType);
 			}
 
 			// Timeout
-			if ( !autoCompleteContext.localText.match(regexTimeout) ) {
+			if ( !autoCompleteContext.localContext.match(regexTimeout) ) {
 				completionItems.push(testStepTimeout);
 			}
 
 			// Delay
-			if ( !autoCompleteContext.localText.match(regexDelay) ) {
+			if ( !autoCompleteContext.localContext.match(regexDelay) ) {
 				completionItems.push(testStepDelay);
 			}
 
 			// Retry
-			if ( !autoCompleteContext.localText.match(regexRetry) ) {
+			if ( !autoCompleteContext.localContext.match(regexRetry) ) {
 				completionItems.push(testStepRetry);
 			}
 
 			// Actions
-			if ( !autoCompleteContext.localText.match(regexActions) && autoCompleteContext.contextType == CONTEXT_TYPE.WEB ) {
+			if ( !autoCompleteContext.localContext.match(regexActions) && autoCompleteContext.contextType == CONTEXT_TYPE.WEB ) {
 				completionItems.push(testStepActions);
 			}
 
@@ -161,7 +162,7 @@ export const testStepProvider = vscode.languages.registerCompletionItemProvider(
 			}
 
 			// Assertions
-			if ( !autoCompleteContext.localText.match(regexAssertions) ) {
+			if ( !autoCompleteContext.localContext.match(regexAssertions) ) {
 				completionItems.push(testStepAssertions);
 			}
 		}

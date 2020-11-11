@@ -10,7 +10,7 @@ export const redisProvider = function (completionItems : vscode.CompletionItem[]
 	commands.insertText = "commands:";
 	commands.documentation = "Commands (Optional)";
 	commands.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexCommands) ) {
+	if ( !autoCompleteContext.localContext.match(regexCommands) ) {
 		completionItems.push(commands);
 	}
 
@@ -20,7 +20,7 @@ export const redisProvider = function (completionItems : vscode.CompletionItem[]
 	path.insertText = "path:";
 	path.documentation = "Path (Optional)";
 	path.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexPath) ) {
+	if ( !autoCompleteContext.localContext.match(regexPath) ) {
 		completionItems.push(path);
 	}
 }

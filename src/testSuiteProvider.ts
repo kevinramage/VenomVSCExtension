@@ -15,7 +15,7 @@ export const testSuiteProvider = vscode.languages.registerCompletionItemProvider
 		const testSuiteName = new vscode.CompletionItem("name");
 		testSuiteName.kind = vscode.CompletionItemKind.Constructor;
 		testSuiteName.detail = "Mandatory";
-		testSuiteName.insertText = "name: testSuite1";
+		testSuiteName.insertText = "name: ";
 		testSuiteName.documentation = new vscode.MarkdownString("Test suite name", true);
 		testSuiteName.commitCharacters = [ Utils.NewLine ];
 

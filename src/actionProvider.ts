@@ -14,14 +14,16 @@ export const actionProvider = vscode.languages.registerCompletionItemProvider('y
 		// Click
 		const testCaseClick = new vscode.CompletionItem("click");
 		testCaseClick.kind = vscode.CompletionItemKind.Module;
-		testCaseClick.insertText = "click:" + Utils.NewLine;
+		testCaseClick.keepWhitespace = true;
+		testCaseClick.insertText = "click:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseClick.documentation = "Click on HTML element";
 		testCaseClick.commitCharacters = [Utils.NewLine];
 
 		// Fill
 		const testCaseFill = new vscode.CompletionItem("fill");
 		testCaseFill.kind = vscode.CompletionItemKind.Module;
-		testCaseFill.insertText = "fill:" + Utils.NewLine;
+		testCaseFill.keepWhitespace = true;
+		testCaseFill.insertText = "fill:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseFill.documentation = "Fill a HTML input element";
 		testCaseFill.commitCharacters = [Utils.NewLine];
 
@@ -35,7 +37,8 @@ export const actionProvider = vscode.languages.registerCompletionItemProvider('y
 		// Navigate
 		const testCaseNavigate = new vscode.CompletionItem("navigate");
 		testCaseNavigate.kind = vscode.CompletionItemKind.Module;
-		testCaseNavigate.insertText = "navigate:" + Utils.NewLine;
+		testCaseNavigate.keepWhitespace = true;
+		testCaseNavigate.insertText = "navigate:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseNavigate.documentation = "Navigate to an url";
 		testCaseNavigate.commitCharacters = [Utils.NewLine];
 
@@ -63,21 +66,24 @@ export const actionProvider = vscode.languages.registerCompletionItemProvider('y
 		// Select
 		const testCaseSelect = new vscode.CompletionItem("select");
 		testCaseSelect.kind = vscode.CompletionItemKind.Module;
-		testCaseSelect.insertText = "select:" + Utils.NewLine;
+		testCaseSelect.keepWhitespace = true;
+		testCaseSelect.insertText = "select:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseSelect.documentation = "Select a value on HTML select element";
 		testCaseSelect.commitCharacters = [Utils.NewLine];
 
 		// UploadFile
 		const testCaseUploadFile = new vscode.CompletionItem("uploadFile");
 		testCaseUploadFile.kind = vscode.CompletionItemKind.Module;
-		testCaseUploadFile.insertText = "uploadFile:" + Utils.NewLine;
+		testCaseUploadFile.keepWhitespace = true;
+		testCaseUploadFile.insertText = "uploadFile:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseUploadFile.documentation = "Upload a file on HTML input upload element";
 		testCaseUploadFile.commitCharacters = [Utils.NewLine];
 
 		// SelectFrame
 		const testCaseSelectFrame = new vscode.CompletionItem("selectFrame");
 		testCaseSelectFrame.kind = vscode.CompletionItemKind.Module;
-		testCaseSelectFrame.insertText = "selectFrame:" + Utils.NewLine;
+		testCaseSelectFrame.keepWhitespace = true;
+		testCaseSelectFrame.insertText = "selectFrame:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseSelectFrame.documentation = "Select a frame / iframe to execute next actions on it";
 		testCaseSelectFrame.commitCharacters = [Utils.NewLine];
 

@@ -10,7 +10,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	addrs.insertText = "addrs: \"amqp://localhost:5672\"";
 	addrs.documentation = "Addrs (Optional)";
 	addrs.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexAddrs) ) {
+	if ( !autoCompleteContext.localContext.match(regexAddrs) ) {
 		completionItems.push(addrs);
 	}
 
@@ -20,7 +20,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	user.insertText = "user:";
 	user.documentation = "User (Optional)";
 	user.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexUser) ) {
+	if ( !autoCompleteContext.localContext.match(regexUser) ) {
 		completionItems.push(user);
 	}
 
@@ -30,7 +30,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	password.insertText = "password:";
 	password.documentation = "Password (Optional)";
 	password.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexPassword) ) {
+	if ( !autoCompleteContext.localContext.match(regexPassword) ) {
 		completionItems.push(password);
 	}
 
@@ -41,7 +41,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	clientType.insertText = new vscode.SnippetString("clientType: ${1|subscriber,publisher|}")
 	clientType.documentation = "Client type (Mandatory)";
 	clientType.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexClientType) ) {
+	if ( !autoCompleteContext.localContext.match(regexClientType) ) {
 		completionItems.push(clientType);
 	}
 
@@ -51,7 +51,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	qName.insertText = "qName:";
 	qName.documentation = "QName (Mandatory)";
 	qName.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexQName) ) {
+	if ( !autoCompleteContext.localContext.match(regexQName) ) {
 		completionItems.push(qName);
 	}
 
@@ -61,7 +61,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	routingKey.insertText = "routingKey:";
 	routingKey.documentation = "Routing key (Optional)";
 	routingKey.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexRoutingKey) ) {
+	if ( !autoCompleteContext.localContext.match(regexRoutingKey) ) {
 		completionItems.push(routingKey);
 	}
 
@@ -71,7 +71,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	exchangeType.insertText = "exchangeType:";
 	exchangeType.documentation = "Exchange type (Optional)";
 	exchangeType.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexExchangeType) ) {
+	if ( !autoCompleteContext.localContext.match(regexExchangeType) ) {
 		completionItems.push(exchangeType);
 	}
 
@@ -81,7 +81,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	exchange.insertText = "exchange:";
 	exchange.documentation = "Exchange (Optional)";
 	exchange.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexExchange) ) {
+	if ( !autoCompleteContext.localContext.match(regexExchange) ) {
 		completionItems.push(exchange);
 	}
 
@@ -92,7 +92,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	messageLimit.insertText = "messageLimit:";
 	messageLimit.documentation = "Message limit (Optional)";
 	messageLimit.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexMessageLimit) ) {
+	if ( !autoCompleteContext.localContext.match(regexMessageLimit) ) {
 		completionItems.push(messageLimit);
 	}
 
@@ -103,7 +103,7 @@ export const rabbitMQProvider = function (completionItems : vscode.CompletionIte
 	messages.insertText = "messages:";
 	messages.documentation = "Messages (Optional)";
 	messages.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexMessages) ) {
+	if ( !autoCompleteContext.localContext.match(regexMessages) ) {
 		completionItems.push(messages);
 	}
 }

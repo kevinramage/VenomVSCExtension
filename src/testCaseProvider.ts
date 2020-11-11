@@ -24,8 +24,9 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 		const regexSteps = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length + "}steps\\s*:.*");
 		const testCaseSteps = new vscode.CompletionItem("steps");
 		testCaseSteps.kind = vscode.CompletionItemKind.Class;
+		testCaseSteps.keepWhitespace = true;
 		testCaseSteps.detail = "Mandatory";
-		testCaseSteps.insertText = "steps:" + Utils.NewLine + "- ";
+		testCaseSteps.insertText = "steps:" + Utils.NewLine + autoCompleteContext.tab + "- ";
 		testCaseSteps.documentation = "Test case steps";
 		testCaseSteps.commitCharacters = [Utils.NewLine];
 
@@ -33,8 +34,9 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 		const regexContext = new RegExp("[\\s|\\-]{" + autoCompleteContext.tab.length + "}context\\s*:.*");
 		const testCaseContext = new vscode.CompletionItem("context");
 		testCaseContext.kind = vscode.CompletionItemKind.Module;
+		testCaseContext.keepWhitespace = true;
 		testCaseContext.detail = "Optionnal";
-		testCaseContext.insertText = "context:" + Utils.NewLine + autoCompleteContext.tab;
+		testCaseContext.insertText = "context:" + Utils.NewLine + autoCompleteContext.tab + autoCompleteContext.tab;
 		testCaseContext.documentation = "Test case context";
 		testCaseContext.commitCharacters = [Utils.NewLine];
 
@@ -43,17 +45,17 @@ export const testCaseProvider = vscode.languages.registerCompletionItemProvider(
 			 autoCompleteContext.currentTab ==  TAB.TESTCASE ) {
 			
 			// Name
-			if ( autoCompleteContext.localText.match(regexName) == null ) {
+			if ( autoCompleteContext.localContext.match(regexName) == null ) {
 				completionItems.push(testCaseName);
 			}
 
 			// steps
-			if ( autoCompleteContext.localText.match(regexSteps) == null ) {
+			if ( autoCompleteContext.localContext.match(regexSteps) == null ) {
 				completionItems.push(testCaseSteps);
 			}
 
 			// context
-			if ( autoCompleteContext.localText.match(regexContext) == null ) {
+			if ( autoCompleteContext.localContext.match(regexContext) == null ) {
 				completionItems.push(testCaseContext);
 			}
 		}

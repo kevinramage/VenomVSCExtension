@@ -10,7 +10,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	method.insertText = "method:";
 	method.documentation = "method (Optional)";
 	method.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexMethod) ) {
+	if ( !autoCompleteContext.localContext.match(regexMethod) ) {
 		completionItems.push(method);
 	}
 
@@ -20,7 +20,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	path.insertText = "path: /";
 	path.documentation = "path (Mandatory)";
 	path.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexPath) ) {
+	if ( !autoCompleteContext.localContext.match(regexPath) ) {
 		completionItems.push(path);
 	}
 
@@ -30,7 +30,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	noAuth.insertText = "noAuth:";
 	noAuth.documentation = "noAuth (Optional)";
 	noAuth.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexNoAuth) ) {
+	if ( !autoCompleteContext.localContext.match(regexNoAuth) ) {
 		completionItems.push(noAuth);
 	}
 
@@ -40,7 +40,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	body.insertText = "body:";
 	body.documentation = "body (Optional)";
 	body.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexBody) ) {
+	if ( !autoCompleteContext.localContext.match(regexBody) ) {
 		completionItems.push(body);
 	}
 
@@ -50,7 +50,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	bodyFile.insertText = "bodyFile:";
 	bodyFile.documentation = "bodyFile (Optional)";
 	bodyFile.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexBodyFile) ) {
+	if ( !autoCompleteContext.localContext.match(regexBodyFile) ) {
 		completionItems.push(bodyFile);
 	}
 
@@ -60,7 +60,7 @@ export const ovhApiProvider = function (completionItems : vscode.CompletionItem[
 	headers.insertText = "headers:";
 	headers.documentation = "headers (Optional)";
 	headers.commitCharacters = [ Utils.NewLine ];
-	if ( !autoCompleteContext.localText.match(regexHeaders) ) {
+	if ( !autoCompleteContext.localContext.match(regexHeaders) ) {
 		completionItems.push(headers);
 	}
 }

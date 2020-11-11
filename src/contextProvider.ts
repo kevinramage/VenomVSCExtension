@@ -84,13 +84,13 @@ export const contextProvider = vscode.languages.registerCompletionItemProvider('
 			autoCompleteContext.currentTab == TAB.TESTCONTEXT ) {
 
 			// Name
-			if ( document.getText().match(regexName) == null ) {
+			if ( autoCompleteContext.localContext.match(regexName) == null ) {
 				completionItems.push(contextName);
 			}
 
 			// Redis
 			if ( autoCompleteContext.name == NAME.REDIS ) {
-				if ( document.getText().match(regexDialURL) == null ) {
+				if ( autoCompleteContext.localContext.match(regexDialURL) == null ) {
 					completionItems.push(contextDialURL);
 				}
 

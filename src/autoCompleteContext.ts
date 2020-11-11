@@ -49,8 +49,9 @@ export class AutoCompleteContext {
 	private _currentTab : number = 0;
 	private _currentParent : string = "";
 	private _isAutoCompletePossible : boolean = false;
-	private _documentText : string = "";
-	private _localText : string = "";
+	
+	//private _documentText : string = "";
+	private _localContext : string = "";
 	private _contextType : string = "";
 
 	private _name : string = "";
@@ -59,26 +60,27 @@ export class AutoCompleteContext {
 
 	public init(document: vscode.TextDocument, position: vscode.Position) {
 
-		// Get previous content
-		this._documentText = document.getText().substr(0, document.offsetAt(position));
-		this._documentText = this._documentText.replace(/\r/g, "").replace(/\t/g, " ");
+		// Get text
+		var previousText = document.getText().substr(0, document.offsetAt(position));
+		previousText = previousText.replace(/\r/g, "").replace(/\t/g, " ");
+		var nextText = document.getText().substr(document.offsetAt(position) - position.character);
+		nextText = nextText.replace(/\r/g, "").replace(/\t/g, " ");
 
-		// Get next content
-		const contentAfter = document.getText().substr(document.offsetAt(position) - position.character);
-
-		// Get current line
-		this.getCurrentLine(this._documentText);
+		// Get current line ( currentTab + isAutoCompletePossible )
+		this.getCurrentLine(previousText);
 		
-		// Collect informations
-		this.computeLocalText(this._documentText, contentAfter);
-		this.computeLastParent(this._documentText);
-		this.computeTestCaseContext(this._documentText, contentAfter)
-		this.detectName(this._documentText);
-		this.detectType(this._documentText);
+		// LocalContext and last parent
+		this.computeLocalContext(previousText, nextText);
+		this.computeLastParent(previousText);
+
+		// Search informations
+		this.searchTestCaseContext(previousText, nextText)
+		this.searchName(this.localContext);
+		this.searchType(this.localContext);
 	}
 
-	private getCurrentLine(documentText: string) {
-		const lines = documentText.split('\n');
+	private getCurrentLine(previousText: string) {
+		const lines = previousText.split('\n');
 		if ( lines.length > 0 ) {
 
 			// Identify if auto complete is possible or not
@@ -123,7 +125,7 @@ export class AutoCompleteContext {
 		} 
 	}
 
-	private detectName(content: string) {
+	private searchName(content: string) {
 		content.split('\n').forEach((line) => {
 			const nameRegex = /\s*name\s*:\s*(?<name>[a-z|A-Z]*)\s*/g;
 			var match = nameRegex.exec(line);
@@ -133,7 +135,7 @@ export class AutoCompleteContext {
 		});
 	}
 
-	private detectType(content: string) {
+	private searchType(content: string) {
 		content.split('\n').forEach((line) => {
 			const testTypeRegex = /\s*\-?\s*type\s*:\s*(?<type>[a-z|A-Z]*)\s*/g;
 			var match = testTypeRegex.exec(line);
@@ -143,7 +145,7 @@ export class AutoCompleteContext {
 		});
 	}
 
-	private computeLocalText(contentBefore: string, contentAfter: string) {
+	private computeLocalContext(contentBefore: string, contentAfter: string) {
 		var result : Array<string> = [];
 
 		// Lines before
@@ -176,7 +178,7 @@ export class AutoCompleteContext {
 			}
 		}
 
-		this._localText = result.join(Utils.NewLine);
+		this._localContext = result.join(Utils.NewLine);
 	}
 
 	private computeLocalTab(contentBefore: string, contentAfter: string, tab: number) {
@@ -214,7 +216,7 @@ export class AutoCompleteContext {
 		return result.join(Utils.NewLine);	
 	}
 
-	public computeTestCaseContext(contentBefore: string, contentAfter: string) {
+	public searchTestCaseContext(contentBefore: string, contentAfter: string) {
 		this._contextType = "";
 		const localText = this.computeLocalTab(contentBefore, contentAfter, TAB.TESTCASE);
 		if ( localText.length > 0 ) {
@@ -238,11 +240,13 @@ export class AutoCompleteContext {
 	public get isAutoCompletePossible () {
 		return this._isAutoCompletePossible;
 	}
+	/*
 	public get documentText() {
 		return this._documentText;
 	}
-	public get localText() {
-		return this._localText;
+	*/
+	public get localContext() {
+		return this._localContext;
 	}
 
 	public get name() {
